@@ -13,65 +13,6 @@ router.post('/manager', (req, res)=>{
 
 });
 
-router.get('/manager/profile', (req, res)=>{
-		
-	res.render('user/manager/profile');
-
-});
-
-router.post('/manager/profile', (req, res)=>{
-});
-
-router.get('/manager/seeSellers', (req, res)=>{
-
-	res.render('user/manager/seeUsers/seeSellers');
-})
-
-router.get('/manager/seeFarmers', (req, res)=>{
-
-	res.render('user/manager/seeUsers/seeFarmers');
-})
-
-router.get('/manager/addSeller', (req, res)=>{
-
-	res.render('user/manager/addUser/addSeller');
-})
-
-router.get('/manager/addFarmer', (req, res)=>{
-
-	res.render('user/manager/addUser/addFarmer');
-})
-
-router.get('/manager/customizeSeller', (req, res)=>{
-
-	res.render('user/manager/customize/customizeSeller');
-})
-
-router.get('/manager/customizeFarmer', (req, res)=>{
-
-	res.render('user/manager/customize/customizeFarmer');
-})
-
-router.get('/manager/addSellers', (req, res)=>{
-
-	res.render('user/manager/addSellers');
-})
-
-router.get('/manager/addFarmers', (req, res)=>{
-
-	res.render('user/manager/addFarmers');
-})
-
-router.get('/manager/addProduct', (req, res)=>{
-
-	res.render('user/manager/addProduct');
-})
-
-router.get('/manager/editProducts', (req, res)=>{
-
-	res.render('user/manager/editProducts');
-})
-
 
 
 router.post('/create', (req, res)=>{

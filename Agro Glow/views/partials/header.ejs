@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Agro Glow</title>
 
     <!-- Custom fonts for this template-->
     <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -31,7 +31,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home/manager">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fab fa-pagelines"></i>
                 </div>
@@ -42,22 +42,15 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" >
-                    <i class="fas fa-fw fa-users-cog"></i>
-                    <span>Manager</span></a>
-            </li>
 
             <!-- Divider -->
-            <hr class="sidebar-divider">
+
 
             <!-- Heading -->
-            <div class="sidebar-heading">
-                Interface
-            </div>
+            
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/user/manager" data-target="#collapseTwo"
+                <a class="nav-link collapsed" href="/home/manager" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Home</span>
@@ -82,8 +75,8 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/user/manager/seeSellers">See Sellers</a>
-                        <a class="collapse-item" href="/user/manager/seeFarmers">See Farmers</a>
+                        <a class="collapse-item" href="/home/manager/seeSellers">See Sellers</a>
+                        <a class="collapse-item" href="/home/manager/seeFarmers">See Farmers</a>
                     </div>
                 </div>
             </li>
@@ -97,8 +90,8 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/user/manager/addSeller">Add Seller</a>
-                        <a class="collapse-item" href="/user/manager/addFarmer">Add Farmer</a>
+                        <a class="collapse-item" href="/home/manager/addSeller">Add Seller</a>
+                        <a class="collapse-item" href="/home/manager/addFarmer">Add Farmer</a>
                     </div>
                 </div>
             </li>
@@ -113,14 +106,14 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/user/manager/customizeSeller">Sellers</a>
-                        <a class="collapse-item" href="/user/manager/customizeFarmer">Farmers</a>
+                        <a class="collapse-item" href="/home/manager/customizeSeller">Sellers</a>
+                        <a class="collapse-item" href="/home/manager/customizeFarmer">Farmers</a>
                     </div>
                 </div>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/user/manager/addProduct" data-target="#collapseTwo"
+                <a class="nav-link collapsed" href="/home/manager/addProduct" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-cart-plus"></i>
                     <span>Add Products</span>
@@ -129,7 +122,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/user/manager/editProducts" data-target="#collapseTwo"
+                <a class="nav-link collapsed" href="/home/manager/editProducts" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-tools"></i>
                     <span>Edit Products</span>
@@ -350,14 +343,14 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%= userInformation[0].name  %> </span>
                                 <img class="img-profile rounded-circle"
-                                    src="/assets/img/undraw_profile.svg">
+                                    src="/assets/img/manager.jpg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="/user/manager/profile">
+                                <a class="dropdown-item" href="/home/manager/profile">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>

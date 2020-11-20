@@ -5,7 +5,7 @@ function getConnection(callback){
         host     : '127.0.0.1',
         user     : 'root',
         password : '',
-        database : 'node'
+        database : 'agro-glow'
       });
        
       connection.connect(function(err) {
