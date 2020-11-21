@@ -3,14 +3,14 @@ const db = require('./db');
 module.exports ={
 
     createUser : function(newUser, callback){
-        var sql = "insert into users values (' ', '"+newUser.name+"', '"+newUser.email+"', 'null', 'null', 'null', '"+newUser.password+"', 'user', '1')";
+        var sql = "insert into users values (' ', '"+newUser.name+"', '"+newUser.email+"', '"+newUser.DOB+"', '"+newUser.mobileNo+"', '"+newUser.userName+"', '"+newUser.password+"', '"+newUser.userType+"', '1')";
         db.execute(sql, function(status){
             callback(status);
         })
     },
 
     validate : function(user, callback){
-        var sql = 'select * from users where email = "'+user.email+'" and password = "'+user.password+'"';
+        var sql = 'select * from users where email = "'+user.userName+'" or username = "'+user.userName+'" and password = "'+user.password+'"';
         db.getResults(sql, function(results){
             if(results.length > 0){
                 callback(true);
@@ -20,8 +20,36 @@ module.exports ={
         })
     },
 
-    getInformation : function(callback){
-        var sql = 'select * from users where email = "'+user.email+'" ';
+    getInformation : function(user, callback){
+        var sql = 'select * from users where email = "'+user.userName+'" or userName ="'+user.userName+'" and validity = "1"';
+        db.getResults(sql, function(results){
+            callback(results);
+        })
+    },
+
+    getAllsellers : function(callback){
+        var sql = 'select * from users where userType = "seller"';
+        db.getResults(sql, function(results){
+            callback(results);
+        })
+    },
+
+    getAllfarmers : function(callback){
+        var sql = 'select * from users where userType = "farmer"';
+        db.getResults(sql, function(results){
+            callback(results);
+        })
+    },
+
+    getSeller : function(userName, callback){
+        var sql = 'select * from users where username = "'+userName+'" and userType = "seller"';
+        db.getResults(sql, function(results){
+            callback(results);
+        })
+    },
+
+    getFarmer : function(userName, callback){
+        var sql = 'select * from users where username = "'+userName+'" and userType = "farmer"';
         db.getResults(sql, function(results){
             callback(results);
         })
@@ -33,6 +61,15 @@ module.exports ={
             callback(status);
         })
     },
+
+    editSeller : function(user, callback){
+        var sql = "update users set name = '"+user.name+"', email = '"+user.email+"', DOB = '"+user.DOB+"', mobileNo = '"+user.mobileNo+"' where userName = '"+user.userName+"' and userType ='seller' "
+        db.execute(sql, function(status){
+            callback(status);
+        })
+    },
+
+    ////////////////////////
 
     getUsers : function(callback){
         var sql = 'select * from user';

@@ -53,36 +53,30 @@
                             <form class="user" method="post">
                                 <input type="hidden" class="form-control form-control-user" id="exampleUsername"
                                             placeholder="userName" name="userName" value="<%= userInformation[0].userName %>">
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                <div class="form-group">
                                         <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="First Name" name =firstName>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                            placeholder="Last Name" name = "lastName">
-                                    </div>
+                                            placeholder="Name" name ="name" value="<%= userInformation[0].name %>">
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address" name="email">
+                                        placeholder="Email Address" name="email" value="<%= userInformation[0].email %>">
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="exampleInputDOB"
-                                        placeholder="Date of Birth" name="DOB">
+                                        placeholder="Date of Birth" name="DOB" value="<%= userInformation[0].DOB %>">
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="exampleInputphoneNo"
-                                        placeholder="Phone Number" name="mobileNo">
+                                        placeholder="Mobile Number" name="mobileNo" value="<%= userInformation[0].mobileNo %>">
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password" name="password">
+                                            id="exampleInputPassword" placeholder="Password" name="password" value="<%= userInformation[0].password %>">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password" name="repassword">
+                                            id="exampleRepeatPassword" placeholder="Repeat Password" name="repassword" value="<%= userInformation[0].password %>">
                                     </div>
                                 </div>
                                 <hr>

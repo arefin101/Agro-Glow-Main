@@ -3,7 +3,7 @@ const userModel = require.main.require('./models/userModels');
 const router = express.Router();
 
 router.get('/', (req,res)=>{
-	res.render('login/login', {layout : './layouts/main2'});
+	res.render('login/login');
 });
 
 router.post('/', (req, res)=>{
@@ -11,14 +11,14 @@ router.post('/', (req, res)=>{
 	console.log(req.body.email);
 
 	user = {
-		'email' : req.body.email,
-		'password' : req.body.password
+		'userName'	: req.body.user,
+		'password' 	: req.body.password
 	}
 
 	userModel.validate(user, function(status){
 		if(status){
-			//res.cookie('email', req.body.email);
-			res.redirect('/home/manager');
+			res.cookie('user', req.body.user);
+			res.redirect('/home');
 		}else{
 			res.redirect('/login');
 		}
@@ -28,7 +28,7 @@ router.post('/', (req, res)=>{
 
 
 router.get('/register', (req,res)=>{
-	res.render('login/register', {layout : './layouts/main2'});
+	res.render('login/register');
 });
 
 router.post('/register', (req, res)=>{
@@ -42,9 +42,13 @@ router.post('/register', (req, res)=>{
 
 	if(password != null){
 		newUser = {
-			'name' : req.body.firstName+' '+req.body.lastName,
-			'email' : req.body.email,
-			'password' : password	
+			'name' 	   	: req.body.firstName+' '+req.body.lastName,
+			'email'    	: req.body.email,
+			'DOB'		: null,
+			'mobileNo'	: null,
+			'userName' 	: req.body.userName,
+			'password' 	: password,
+			'userType' 	: 'farmer'
 		}
 		userModel.createUser(newUser,function(status){
 			if(status){
