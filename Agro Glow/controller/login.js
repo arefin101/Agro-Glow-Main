@@ -2,6 +2,7 @@ const express = require('express');
 const userModel = require.main.require('./models/userModels');
 const router = express.Router();
 
+
 router.get('/', (req,res)=>{
 	res.render('login/login');
 });
@@ -15,6 +16,8 @@ router.post('/', (req, res)=>{
 		'password' 	: req.body.password
 	}
 
+	//console.log(req.body.user);
+
 	userModel.validate(user, function(status){
 		if(status){
 			res.cookie('user', req.body.user);
@@ -25,7 +28,6 @@ router.post('/', (req, res)=>{
 
 	})
 });
-
 
 router.get('/register', (req,res)=>{
 	res.render('login/register');
@@ -73,5 +75,6 @@ router.post('/forgot-password', (req, res)=>{
 
 	res.redirect('/forgot-password');
 });
+
 
 module.exports = router;

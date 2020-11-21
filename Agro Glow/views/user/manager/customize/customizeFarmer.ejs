@@ -42,6 +42,7 @@
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 31px;">Mobile</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 69px;">User Name</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 67px;">Position</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 67px;">Validity</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 67px;">Action</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 67px;">Action</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 67px;">Action</th>
@@ -55,6 +56,7 @@
                                         <th rowspan="1" colspan="1">Mobile</th>
                                         <th rowspan="1" colspan="1">User Name</th>
                                         <th rowspan="1" colspan="1">Position</th>
+                                        <th rowspan="1" colspan="1">Validity</th>
                                         <th rowspan="1" colspan="1">Action</th>
                                         <th rowspan="1" colspan="1">Action</th>
                                         <th rowspan="1" colspan="1">Action</th>
@@ -68,10 +70,11 @@
                                             <td><%= farmerInformation[i].DOB %></td>
                                             <td><%= farmerInformation[i].mobileNo %></td>
                                             <td><%= farmerInformation[i].userName %></td>
-                                            <td><%= farmerInformation[i].userType %></td>     
+                                            <td><%= farmerInformation[i].userType %></td>
+                                            <td><%= farmerInformation[i].validity %></td>     
                                             <td><a href="/home/manager/customizeFarmer/edit/<%= farmerInformation[i].userName %>" class="btn btn-primary">Edit</a></td>
-                                            <td><a href="" class="btn btn-warning">Block</a></td>
-                                            <td><a href="" class="btn btn-danger">Delete</a></td>                                            
+                                            <td><a href="#" class="btn btn-warning">Block</a></td>
+                                            <td><a href="/home/manager/customizeFarmer/delete/<%= farmerInformation[i].userName %>" class="btn btn-danger">Delete</a></td>                                            
                                         </tr>
                                     <% } %>
                                 </tbody>

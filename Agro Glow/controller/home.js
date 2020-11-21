@@ -2,11 +2,13 @@ const express = require('express');
 const userModel = require.main.require('./models/userModels');
 const router = express.Router();
 
+//////<------------------manager------------------->//////
+
 router.get('/', (req, res)=>{
 	user ={
 		userName : req.cookies['user']
 	}
-
+	console.log(user.userName);
 	userModel.getInformation(user,function(results){
 		if(results[0].userType == 'manager'){
 			res.redirect('/home/manager');
@@ -210,21 +212,6 @@ router.get('/manager/customizeSeller', (req, res)=>{
 	  });
 })
 
-router.get('/manager/customizeFarmer', (req, res)=>{
-	user ={
-		userName : req.cookies['user']
-	}
-
-	userModel.getAllfarmers(function(results){
-		farmers = results;
-		// console.log(farmers);
-	})
-
-	userModel.getInformation(user, function(results){
-		res.render('user/manager/customize/customizeFarmer', {layout : './layouts/manager-main', userInformation : results, farmerInformation : farmers});
-	  });
-})
-
 router.get('/manager/customizeSeller/edit/:userName', (req, res)=>{
 
 	var seller = req.params.userName;
@@ -235,7 +222,6 @@ router.get('/manager/customizeSeller/edit/:userName', (req, res)=>{
 
 	userModel.getSeller(seller, function(results){
 		sellers = results;
-		//console.log(results);
 	})
 
 	userModel.getInformation(user,function(results){
@@ -260,52 +246,134 @@ router.post('/manager/customizeSeller/edit/:userName', (req, res)=>{
 		if(status){
 			res.redirect('/home/manager/customizeSeller');
 		}else{
-			res.redirect('/manager/customizeSeller/edit/"'+user.userName+'"')
+			res.redirect('/manager/customizeSeller/edit/"'+user.userName+'"');
 		}
 	})
-
-	// userModel.getInformation(function(results){
-	// 	res.render('user/manager/customize/customizeSeller', {userInformation : results, sellerInformation : sellers});
-	//   });
-	  
 })
 
-router.get('/manager/customizeSeller/edit/:userName', (req, res)=>{
+router.get('/manager/customizeSeller/delete/:userName', (req, res)=>{
 
 	var seller = req.params.userName;
-
-	userModel.getFarmer(seller, function(results){
-		farmers = results;
-		//console.log(results);
-	})
 
 	user ={
 		userName : req.cookies['user']
 	}
 
-	userModel.getInformation(function(results){
-		res.render('user/manager/customize/edit/editFarmer', {layout : './layouts/manager-main', userInformation : results, farmerInformation : farmers});
+	userModel.getSeller(seller, function(results){
+		sellers = results;
+	})
+
+	userModel.getInformation(user,function(results){
+		res.render('user/manager/customize/delete/deleteSeller', {layout : './layouts/manager-main', userInformation : results, sellerInformation : sellers});
 	  });
-	//res.render('user/manager/customize/edit/editFarmer');
+	  
 })
 
-// router.get('/manager/addSeller', (req, res)=>{
+router.post('/manager/customizeSeller/delete/:userName', (req, res)=>{
 
-// 	userModel.getInformation(function(results){
-// 		res.render('user/manager/addUser/addSeller', {userInformation : results});
-// 	  });
+	user = {
+		userName 	: req.params.userName,
+	}
 
-// 	//res.render('user/manager/addSellers');
-// })
+	console.log(user.userName);
 
-// router.get('/manager/addFarmer', (req, res)=>{
+	userModel.deleteSeller(user, function(status){
+		if(status){
+			res.redirect('/home/manager/customizeSeller');
+		}else{
+			res.redirect('/home/manager/customizeSeller/delete/'+user.userName+'');
+		}
+	})
+})
 
-// 	userModel.getInformation(function(results){
-// 		res.render('user/manager/addUser/addFarmer', {userInformation : results});
-// 	  });
-	
-// 	  //res.render('user/manager/addFarmers');
-// })
+router.get('/manager/customizeFarmer/delete/:userName', (req, res)=>{
+
+	var farmer = req.params.userName;
+
+	user ={
+		userName : req.cookies['user']
+	}
+
+	userModel.getFarmer(farmer, function(results){
+		farmer = results;
+	})
+
+	userModel.getInformation(user,function(results){
+		res.render('user/manager/customize/delete/deleteFarmer', {layout : './layouts/manager-main', userInformation : results, farmerInformation : farmer});
+	  });
+	  
+})
+
+router.post('/manager/customizeFarmer/delete/:userName', (req, res)=>{
+
+	user = {
+		userName 	: req.params.userName,
+	}
+
+	//console.log(user.userName);
+
+	userModel.deleteFarmer(user, function(status){
+		if(status){
+			res.redirect('/home/manager/customizeFarmer');
+		}else{
+			res.redirect('/home/manager/customizeFarmer/delete/'+user.userName+'');
+		}
+	})
+})
+
+router.get('/manager/customizeFarmer', (req, res)=>{
+	user ={
+		userName : req.cookies['user']
+	}
+
+	userModel.getAllfarmers(function(results){
+		farmers = results;
+		// console.log(farmers);
+	})
+
+	userModel.getInformation(user, function(results){
+		res.render('user/manager/customize/customizeFarmer', {layout : './layouts/manager-main', userInformation : results, farmerInformation : farmers});
+	  });
+})
+
+router.get('/manager/customizeFarmer/edit/:userName', (req, res)=>{
+
+	var farmer = req.params.userName;
+
+	user ={
+		userName : req.cookies['user']
+	}
+
+	userModel.getFarmer(farmer, function(results){
+		farmer = results;
+	})
+
+	userModel.getInformation(user,function(results){
+		res.render('user/manager/customize/edit/editFarmer', {layout : './layouts/manager-main', userInformation : results, farmerInformation : farmer});
+	  });
+	  
+})
+
+router.post('/manager/customizeFarmer/edit/:userName', (req, res)=>{
+
+	user = {
+		name   		: req.body.name,
+		userName 	: req.params.userName,
+		email		: req.body.email,
+		DOB			: req.body.DOB,
+		mobileNo	: req.body.mobileNo
+	}
+
+	console.log(req.body.name);
+
+	userModel.editFarmer(user, function(status){
+		if(status){
+			res.redirect('/home/manager/customizeFarmer');
+		}else{
+			res.redirect('/manager/customizeFarmer/edit/"'+user.userName+'"');
+		}
+	})
+})
 
 router.get('/manager/addProduct', (req, res)=>{
 	user ={
@@ -343,29 +411,6 @@ router.get('/manager/systemLeave', (req, res)=>{
 	//res.render('user/manager/systemLeave');
 })
 
-
-
-
-
-router.get('/', (req, res)=>{
-	if(req.cookies['uname'] != null){
-			var data = {
-							'name' : req.cookies['uname'],
-							'id' : '123'
-						};
-		res.render('home/index', data);
-	}else{
-		res.redirect('login');
-	}
-});
-
-router.get('/userlist', (req, res)=>{
-
-	  userModel.getUsers(function(results){
-
-		res.render('home/userlist', {userlist : results});
-	  });
-	  
-});
+////////////////////////<-------manager-------->////////////////////
 
 module.exports = router;
